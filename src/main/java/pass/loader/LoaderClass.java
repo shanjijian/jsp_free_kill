@@ -14,6 +14,11 @@ public class LoaderClass {
     public static void main(String[] args) {
         //BootstrapClassLoader加载的jar包
         System.out.println(System.getProperty("sun.boot.class.path"));
+        //ExtClassLoader加载的jar包
+        System.out.println(System.getProperty("java.ext.dirs"));
+        //SystemClassLoader(AppClassLoader)加载的是java.class.path下的路径
+        //结果为当前java工程目录target/classes，里面存放的是编译生成的class文件
+        System.out.println(System.getProperty("java.class.path"));
         //使用自定义的ClassLoader加载系统类加载器
         ClassLoader systemClassLoader = Loader.MyLoader.class.getClassLoader();
         System.out.println("systemClassLoader = " + systemClassLoader);
@@ -22,6 +27,7 @@ public class LoaderClass {
         System.out.println("extensionClassLoader = " + extensionClassLoader);
         //调用扩展类加载器的getParent()：无法获取引导类加载器
         //引导类加载器主要负责加载Java的核心类库，无法加载自定义类
+        //BootStrap是祖先类不是Java编写的，所以打印出class为null
         ClassLoader bootstrapClassloader = extensionClassLoader.getParent();
         System.out.println("bootstrapClassloader = " + bootstrapClassloader);
         //sun.misc.Launcher是java虚拟机的入口应用

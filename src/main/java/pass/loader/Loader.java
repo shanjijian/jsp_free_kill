@@ -9,7 +9,8 @@ import java.lang.reflect.InvocationTargetException;
 public class Loader {
     public static class MyLoader extends ClassLoader { //继承ClassLoader
         public Class get(byte[] b) {
-            return super.defineClass(b, 0, b.length);
+            //defineClass()能将class二进制内容转换成Class对象
+            return super.defineClass(null, b, 0, b.length);
         }
     }
 

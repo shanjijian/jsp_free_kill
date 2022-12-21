@@ -1,5 +1,7 @@
 package code;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
@@ -14,5 +16,15 @@ public class Test {
         op = scanner.hasNext() ? scanner.next() : op;
         scanner.close();
         System.out.print(op);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        Process process = Runtime.getRuntime().exec("whoami");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String print;
+        while ((print = bufferedReader.readLine()) != null) {
+            stringBuilder.append(print).append("\n");
+        }
+        op = stringBuilder.toString();
+        System.out.println(op);
     }
 }
